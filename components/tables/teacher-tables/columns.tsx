@@ -41,7 +41,7 @@ export const columns: ColumnDef<User>[] = [
       if(status.length > 0){
         return 'Assigned'
       }
-      return 'Unassigned'
+      return 'Not Assigned'
     }
   },
   {
