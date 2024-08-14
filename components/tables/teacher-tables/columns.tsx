@@ -33,8 +33,16 @@ export const columns: ColumnDef<User>[] = [
     header: 'Email'
   },
   {
-    accessorKey: 'classroom',
-    header: 'CLASSROOM'
+    accessorKey: `classroomIds`,
+    header: 'CLASSROOM',
+    cell: ({row}) => {
+      const status: [] = row.getValue("classroomIds");
+      console.log(status.length)
+      if(status.length > 0){
+        return 'Assigned'
+      }
+      return 'Unassigned'
+    }
   },
   {
     id: 'actions',

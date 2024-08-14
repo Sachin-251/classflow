@@ -1,3 +1,4 @@
+import getClassroomById from '@/app/actions/getClassroomById';
 import getTeachers from '@/app/actions/getTeachers';
 import { Breadcrumbs } from '@/components/breadcrums';
 import PageContainer from '@/components/layout/page-container';

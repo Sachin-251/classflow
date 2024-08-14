@@ -40,8 +40,10 @@ model Classroom {
   name String
   startTime String
   endTime String
-  days String[]
+  startDay String
+  endDay String
   teacherId String? @db.ObjectId
+  teacherName String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

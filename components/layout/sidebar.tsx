@@ -1,17 +1,18 @@
 'use client';
 import React, { useState } from 'react';
 import { DashboardNav } from '@/components/dashboard-nav';
-import { navItemsPrincipal } from '@/constants/data';
 import { cn } from '@/lib/utils';
 import { ChevronLeft } from 'lucide-react';
 import { useSidebar } from '@/hooks/useSidebar';
 import Link from 'next/link';
+import { NavItem } from '@/types';
 
 type SidebarProps = {
   className?: string;
+  navItems: NavItem[];
 };
 
-export default function Sidebar({ className }: SidebarProps) {
+export default function Sidebar({ className, navItems }: SidebarProps) {
   const { isMinimized, toggle } = useSidebar();
 
   const handleToggle = () => {
@@ -54,7 +55,7 @@ export default function Sidebar({ className }: SidebarProps) {
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <div className="mt-3 space-y-1">
-            <DashboardNav items={navItemsPrincipal} />
+            <DashboardNav items={navItems} />
           </div>
         </div>
       </div>

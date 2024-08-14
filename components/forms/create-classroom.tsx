@@ -24,7 +24,11 @@ interface CreateClassroomProps{
 const CreateClassroom: React.FC<CreateClassroomProps> = ({onClose, teachers}) => {
 
     const [isLoading, setIsLoading] = useState(false);
-    const [start, setStart] = useState('');
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
+    const [startDay, setStartDay] = useState('');
+    const [endDay, setEndDay] = useState('');
+    const [teacher, setTeacher] = useState('Not Assigned');
     const router = useRouter();
 
     const {
@@ -45,9 +49,15 @@ const CreateClassroom: React.FC<CreateClassroomProps> = ({onClose, teachers}) =>
     });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        // setIsLoading(true);
-        const updatedData = {...data, start}
-        console.log(updatedData)
+        setIsLoading(true);
+        const updatedData = {...data, startTime, endTime, startDay, endDay, teacher}
+
+        axios.post('/api/classroom', updatedData)
+            .then(() => toast.success('New Classroom Created'))
+            .then(() => onClose())
+            .then(() => router.refresh())
+            .catch(() => toast.error('Something went wrong'))
+            .finally(() => setIsLoading(false))
         
     }
 
@@ -58,7 +68,7 @@ const CreateClassroom: React.FC<CreateClassroomProps> = ({onClose, teachers}) =>
                 <input type="name" className={`${errors['name'] ? 'focus:ring-rose-500' : 'focus-visible:ring-ring'} flex h-11 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50`} placeholder='Name' {...register("name", {required: true})} disabled={isLoading} />
 
                 <div className='w-full flex gap-4'>
-                    <Select onValueChange={(value) => setStart(value)}>
+                    <Select onValueChange={(value) => setStartTime(value)}>
                         <SelectTrigger className='h-11'>
                             <SelectValue placeholder='Start Time' />
                         </SelectTrigger>
@@ -69,7 +79,7 @@ const CreateClassroom: React.FC<CreateClassroomProps> = ({onClose, teachers}) =>
                         </SelectContent>
                     </Select>
 
-                    <Select>
+                    <Select onValueChange={(value) => setEndTime(value)}>
                         <SelectTrigger className='h-11'>
                             <SelectValue placeholder='End Time' />
                         </SelectTrigger>
@@ -82,7 +92,7 @@ const CreateClassroom: React.FC<CreateClassroomProps> = ({onClose, teachers}) =>
                 </div>
 
                 <div className='w-full flex gap-4'>
-                    <Select>
+                    <Select onValueChange={(value) => setStartDay(value)}>
                         <SelectTrigger className='h-11'>
                             <SelectValue placeholder='Start Day' />
                         </SelectTrigger>
@@ -93,7 +103,7 @@ const CreateClassroom: React.FC<CreateClassroomProps> = ({onClose, teachers}) =>
                         </SelectContent>
                     </Select>
 
-                    <Select>
+                    <Select onValueChange={(value) => setEndDay(value)}>
                         <SelectTrigger className='h-11'>
                             <SelectValue placeholder='End Day' />
                         </SelectTrigger>
@@ -105,7 +115,7 @@ const CreateClassroom: React.FC<CreateClassroomProps> = ({onClose, teachers}) =>
                     </Select>
                 </div>
 
-                <Select>
+                <Select onValueChange={(value) => setTeacher(value)}>
                     <SelectTrigger className='h-11'>
                         <SelectValue placeholder='Teacher' />
                     </SelectTrigger>

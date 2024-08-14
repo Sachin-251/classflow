@@ -41,22 +41,10 @@ export const navItemsPrincipal: NavItem[] = [
 
   export const navItemsTeacher: NavItem[] = [
     {
-      title: 'Dashboard',
-      href: '/dashboard',
-      icon: 'dashboard',
-      label: 'Dashboard'
-    },
-    {
       title: 'Students',
       href: '/dashboard/students',
-      icon: 'employee',
+      icon: 'student',
       label: 'students'
-    },
-    {
-        title: 'Classrooms',
-        href: '/dashboard/classrooms',
-        icon: 'kanban',
-        label: 'classrooms'
     },
     {
         title: 'Timetables',
@@ -74,20 +62,14 @@ export const navItemsPrincipal: NavItem[] = [
 
   export const navItemsStudent: NavItem[] = [
     {
-      title: 'Dashboard',
-      href: '/dashboard',
-      icon: 'dashboard',
-      label: 'Dashboard'
-    },
-    {
       title: 'Classmates',
       href: '/dashboard/students',
-      icon: 'employee',
+      icon: 'student',
       label: 'classmates'
     },
     {
-        title: 'Timetables',
-        href: '/dashboard/timetables',
+        title: 'Timetable',
+        href: '/dashboard/timetable',
         icon: 'calendar',
         label: 'timetables'
     },

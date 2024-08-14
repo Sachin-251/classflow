@@ -1,4 +1,5 @@
 import { Icons } from '@/components/icons';
+import { Classroom, User } from '@prisma/client';
 
 export interface NavItem {
   title: string;

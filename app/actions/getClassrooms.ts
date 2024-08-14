@@ -10,7 +10,7 @@ const getClassrooms = async () => {
 
     try {
         const classrooms = await prisma.classroom.findMany();
-
+        
         return classrooms;
     } catch (error) {
         return []

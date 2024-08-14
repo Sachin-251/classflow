@@ -29,7 +29,7 @@ export const columns: ColumnDef<Classroom>[] = [
     header: 'NAME'
   },
   {
-    accessorKey: 'teacher',
+    accessorKey: 'teacherName',
     header: 'TEACHER'
   },
   {
@@ -41,8 +41,12 @@ export const columns: ColumnDef<Classroom>[] = [
     header: 'END TIME'
   },
   {
-    accessorKey: 'days',
-    header: 'DAYS'
+    accessorKey: `startDay`,
+    header: 'FROM'
+  },
+  {
+    accessorKey: 'endDay',
+    header: 'TO'
   },
   {
     id: 'actions',
